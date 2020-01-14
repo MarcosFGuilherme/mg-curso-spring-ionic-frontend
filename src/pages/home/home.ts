@@ -29,10 +29,20 @@ export class HomePage {
   ionViewDidLeave() {
     this.menu.swipeEnable(true);
   }
+
+  ionViewDidEnter(){
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {}
+      )
+  }
+
   login(){
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
         this.auth.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('CategoriasPage');
       },
