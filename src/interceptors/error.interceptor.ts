@@ -14,7 +14,6 @@ import 'rxjs/add/operator/catch';
 export class ErrorInterceptor implements HttpInterceptor {
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      console.log("Passou no inteceptor.");
     return next.handle(req)
     .catch((error, caught) => {
       let errorObj = error;
