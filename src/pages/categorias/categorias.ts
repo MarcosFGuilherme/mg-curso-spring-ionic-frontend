@@ -27,7 +27,6 @@ export class CategoriasPage {
     this.categoriaService.findAll()
       .subscribe(
           response => { 
-            //console.log(response); 
             this.items = response;
           },
           error => { }
@@ -35,6 +34,6 @@ export class CategoriasPage {
   }
 
   showProdutos(categoria_id :  string){
-    this.navCtrl.push('ProdutosPage', { categoria_id: categoria_id});
+    this.navCtrl.push('ProdutosPage', { categoria_id: categoria_id });
   };
 }
